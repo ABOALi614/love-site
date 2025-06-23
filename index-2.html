@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الوقت اللي عدى علينا سوا ❤️</title>
+    <style>
+        body {
+            background: #0b0c10;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        #counter {
+            font-size: 24px;
+            background: #1f1f1f;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #ff4d6d55;
+            direction: rtl;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>بقالنا قد إيه مع بعض؟ ❤️</h1>
+    <div id="counter">جارٍ الحساب...</div>
+
+    <script>
+        // عدّل التاريخ هنا لتاريخ بداية علاقتكم
+        const startDate = new Date("2021-05-01T00:00:00");
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            const totalSeconds = Math.floor(diff / 1000);
+
+            const years = Math.floor(totalSeconds / (365.25 * 24 * 3600));
+            const months = Math.floor((totalSeconds % (365.25 * 24 * 3600)) / (30.44 * 24 * 3600));
+            const days = Math.floor((totalSeconds % (30.44 * 24 * 3600)) / (24 * 3600));
+            const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            document.getElementById("counter").innerText =
+                `❤️ ${years} سنة، ${months} شهر، ${days} يوم، ${hours} ساعة، ${minutes} دقيقة، و${seconds} ثانية ❤️`;
+        }
+
+        updateCounter();
+        setInterval(updateCounter, 1000); // يحدث كل ثانية
+    </script>
+    <h3>انا زهقت منك علفكره يابييهه ، بهزر طبعا🙃🙃نن</h3> 
+</body>
+
+</html>
