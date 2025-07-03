@@ -31,26 +31,34 @@
         #romantic-letters {
   text-align: center;
   margin-top: 30px;
+  position: relative;
   animation: fadeIn 2s ease-in-out;
 }
 
 .letter {
-  font-size: 60px;
+  font-size: 65px;
   font-weight: bold;
-  color: #ff6b81;
-  margin: 0 20px;
+  margin: 0 30px;
   cursor: pointer;
   transition: transform 0.3s ease;
   position: relative;
+  display: inline-block;
+  animation: float 4s ease-in-out infinite;
+  font-family: 'Cairo', sans-serif;
+}
+
+.letter-a {
+  color: #ffffff;
+  text-shadow: 0 0 15px #ff5ec4, 0 0 25px #ff5ec4;
+}
+
+.letter-r {
+  color: #ff0033;
+  text-shadow: 0 0 15px #ff0033, 0 0 25px #ff0033;
 }
 
 .letter:hover {
-  transform: scale(1.2) rotate(5deg);
-}
-
-.plus {
-  font-size: 40px;
-  color: #ccc;
+  transform: scale(1.3) rotate(5deg);
 }
 
 #love-msg {
@@ -66,6 +74,12 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
 
@@ -174,12 +188,12 @@
 </head>
 
 <body>
-    <div id="romantic-letters">
-  <span class="letter" onclick="showLove('A')">A</span>
-  <span class="plus">+</span>
-  <span class="letter" onclick="showLove('R')">R</span>
+<div id="romantic-letters">
+  <span class="letter letter-a" onclick="showLove('A')">A</span>
+  <span class="letter letter-r" onclick="showLove('R')">R</span>
 </div>
 <div id="love-msg"></div>
+
 
     <div id="login" class="active">
         <h2>💌 اكنب كلمة السر ، مستنيك اتفضل </h2>
@@ -188,7 +202,7 @@
     </div>
 
     <div id="content">
-        <h1>💘 بتعمل ايه هنا يا صغنن <br> 🙃🙃🙃🙃🙃😘بحبببببببببببببببببك علفكره  </h1>
+        <h1>الاتنين اللي بيكملوا بيتعرفوا من عقليتهم مش من قدر حبهم لبعض ، عارفين ان الدنيا مليانه مشاكل ، لكن قرروا يعيشوها سوا بكل تفاصيلها ، عارفين ان مش دايما هتبقى ورد ولا الجو حلو علطول ، لكن قرروا يكملوا <br> وعشان كده اختارتك ❤️ </h1>
         <button id="loveButton" onclick="window.location.href='index-2.html'">
   اضغط عليا وشوف حبنا قد إيه 💘
 </button>
@@ -225,23 +239,24 @@
         }
         function showLove(letter) {
   const messages = {
-    A: ["أنت البدايات الحلوة ♥", "كل حاجة حلوة بتبدأ بحرف A 💌", "أنا = أحمد = حب 💘"],
-    R: ["روحي كلها فيكِ ♥", "R = Romantic ♥", "رقّة اسمك في قلبي دايمًا 💞"]
+    A: ["أنت النور اللي بدأ بيه كل شيء 💫🤍", "احمد هوا بداية كل حاجة حلوهA", "💭أنا وأنتي = قصة ما تتكررش"],
+    R: ["♥روحي كلها دايبه فيكي يا مزة المزز", "R = Red = Romance ❤️", "💌حبك مكتوب في قلبي من سنييين"]
   };
   
   const msgBox = document.getElementById("love-msg");
   const randomMsg = messages[letter][Math.floor(Math.random() * messages[letter].length)];
   msgBox.innerText = randomMsg;
 
-  // قلوب تطير مؤقتًا
   createHearts(letter);
 }
 
 function createHearts(letter) {
-  const parent = document.querySelector(`#romantic-letters .letter:nth-child(${letter === 'A' ? 1 : 3})`);
+  const parent = document.querySelector(`.letter-${letter.toLowerCase()}`);
+  const color = letter === 'A' ? '🤍' : '❤️';
+  
   for (let i = 0; i < 6; i++) {
     const heart = document.createElement("div");
-    heart.innerText = "💖";
+    heart.innerText = color;
     heart.style.position = "absolute";
     heart.style.left = Math.random() * 40 + "%";
     heart.style.top = "0";
@@ -252,6 +267,7 @@ function createHearts(letter) {
   }
 }
 
+// Animation for floating hearts
 const style = document.createElement("style");
 style.innerHTML = `
 @keyframes floatUp {
