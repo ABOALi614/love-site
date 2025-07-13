@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <title>معرض الملكه</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .folders {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>معرض الملكة👑</h1>
+
+    <!-- هنا هنحط input وكلمة السر جوا div اسمه password-container -->
+    <div class="password-container">
+        <input type="password" id="password" placeholder="أدخل كلمة المرور للوصول للمحتوى">
+        <button onclick="checkPassword()">دخول</button>
+        <div id="error" class="error"></div>
+    </div>
+
+    <!-- هنا روابط الصور والفيديوهات، في الأول هتكون مخفية -->
+    <div class="folders">
+        <a href="images.html" class="folder">📁 صور</a>
+        <a href="videos.html" class="folder">📁 فيديوهات</a>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const correct = "اتمني"; // هنا غير كلمة السر زي ما تحب
+
+            if (password === correct) {
+                // لما يدخل كلمة السر الصح، نخفي الانبوت ونظهر اللينكات
+                document.querySelector('.password-container').style.display = 'none';
+                document.querySelector('.folders').style.display = 'flex';
+                localStorage.setItem("access_granted", "true");
+            } else {
+                document.getElementById('error').innerText = 'كلمة المرور غير صحيحة';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
