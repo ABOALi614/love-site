@@ -28,12 +28,7 @@
             flex-direction: column;
             overflow: hidden;
         }
-        #h1-1 {
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            padding: 30px;
-        }
+ 
         #romantic-letters {
   text-align: center;
   margin-top: 30px;
@@ -214,7 +209,7 @@
 </head>
 
 <body>
-    <h1 id="h1-1">الموقع تحت التعديل ... يجري العمل على تحديث سيرفع قريبا</h1>
+     
 <div id="romantic-letters">
   <span class="letter letter-a" onclick="showLove('A')">A</span>
   <span class="letter letter-r" onclick="showLove('R')">R</span>
@@ -229,7 +224,9 @@
     </div>
 
     <div id="content">
-        <h1>ظلّ الماضي بيراقب خطواتي … واللي جاي أثقل من أي انتظار . </h1>
+            <h1>الاتنين اللي بيكملوا بيتعرفوا من عقليتهم مش من قدر حبهم لبعض ، عارفين ان الدنيا مليانه مشاكل ، لكن قرروا يعيشوها
+      سوا بكل تفاصيلها ، عارفين ان مش دايما هتبقى ورد ولا الجو حلو علطول ، لكن قرروا يكملوا <br> وعشان كده اختارتك ❤️
+    </h1>
         <button id="loveButton" onclick="window.location.href='index-2.html'">
   اضغط عليا وشوف اللي بينا قد إيه 💘
 </button>
@@ -257,7 +254,7 @@
                 heart.classList.add("heart");
                 heart.style.left = Math.random() * 100 + "vw";
                 heart.style.fontSize = (Math.random() * 20 + 10) + "px";
-                heart.innerText = ["❤️", "💔"];
+                heart.innerText = "❤️";
                 document.body.appendChild(heart);
 
                 setTimeout(() => {
@@ -308,4 +305,5 @@ document.head.appendChild(style);
 </body>
 
 </html>
+
 
